@@ -19,13 +19,13 @@ category_mappings:
   - { id: 402, cate_level1: TV, cate_level2: TV/HD, cate_level2_desc: "TV Series(影劇/綜藝)/HD" }
   - { id: 435, cate_level1: TV, cate_level2: TV/SD, cate_level2_desc: "TV Series(影劇/綜藝)/DVDiSo" }
   - { id: 438, cate_level1: TV, cate_level2: TV/HD, cate_level2_desc: "TV Series(影劇/綜藝)/BD" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "紀錄教育" }
-  - { id: 405, cate_level1: Anime, cate_level2: TV/Anime, cate_level2_desc: "Anime(動畫)" }
   - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports(運動)" }
-  - { id: 422, cate_level1: Other, cate_level2: PC/0day, cate_level2_desc: "Software(軟體)" }
-  - { id: 423, cate_level1: Game, cate_level2: PC/Games, cate_level2_desc: "PCGame(PC遊戲)" }
-  - { id: 427, cate_level1: Other, cate_level2: Books, cate_level2_desc: "eBook(電子書)" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc(其他)" }
+  - { id: 404, cate_level1: TV, cate_level2: TV/Documentary, cate_level2_desc: "紀錄教育" }
+  - { id: 405, cate_level1: Anime, cate_level2: TV/Anime, cate_level2_desc: "Anime(動畫)" }
+  - { id: 423, cate_level1: TV, cate_level2: Games, cate_level2_desc: "PCGame(PC遊戲)" }
+  - { id: 427, cate_level1: TV, cate_level2: Books, cate_level2_desc: "eBook(電子書)" }
+  - { id: 409, cate_level1: TV, cate_level2: Other, cate_level2_desc: "Misc(其他)" }
+  - { id: 422, cate_level1: TV, cate_level2: Software, cate_level2_desc: "Software(軟體)" }
   # 音乐
   - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MV(演唱)" }
   - { id: 408, cate_level1: Music, cate_level2: Audio/Other, cate_level2_desc: "Music(AAC/ALAC)" }

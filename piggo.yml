@@ -17,15 +17,15 @@ category_mappings:
   - {id: 407, cate_level1: TV, cate_level2: TV/Sport, desc: "大众体育"}
   - {id: 406, cate_level1: Music, cate_level2: MusicVideo, desc: "大众MV"}
   - {id: 408, cate_level1: Music, cate_level2: Audio, desc: "大众音乐"}
-  - {id: 409, cate_level1: Other, cate_level2: Other, desc: "大众其他"}
-  - {id: 912, cate_level1: Other, cate_level2: Other, desc: "大众有声"}
+  - {id: 409, cate_level1: Music, cate_level2: Other, desc: "大众其他"}
+  - {id: 912, cate_level1: Music, cate_level2: Other, desc: "大众有声"}
   # kids zone
   - {id: 909, cate_level1: Movie, cate_level2: Movies, desc: "儿童电影"}
   - {id: 907, cate_level1: TV, cate_level2: Audio, desc: "儿童纪录片"}
   - {id: 908, cate_level1: TV, cate_level2: TV Series, desc: "儿童剧集"}
   - {id: 911, cate_level1: Music, cate_level2: Movies, desc: "儿童音乐"}
   - {id: 905, cate_level1: Music, cate_level2: MusicVideo, desc: "儿童有声"}
-  - {id: 910, cate_level1: Other, cate_level2: Movies, desc: "儿童绘本"}
+  - {id: 910, cate_level1: Music, cate_level2: Movies, desc: "儿童绘本"}
 
 
 userinfo:
