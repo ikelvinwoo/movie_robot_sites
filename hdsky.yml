@@ -2,28 +2,28 @@ id: hdsky
 name: 天空
 domain: https://hdsky.me/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/htnanako/movie-robot-public/main/app/sites/hdsky.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/hdsky.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐MV" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/运体" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/无损音乐" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
-  - { id: 410, cate_level1: Movie, cate_level2: Movies , cate_level2_desc: "Movies" }
-  - { id: 411, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集(合集）" }
-  - { id: 412, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/海外剧集(分集）" }
-  - { id: 413, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/海外剧集(合集）" }
-  - { id: 414, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/海外综艺(分集）" }
-  - { id: 415, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/海外综艺(合集）" }
+  - { id: 401, cate_level1: Movie, cate_level2: Movie, cate_level2_desc: "电影" }
+  - { id: 404, cate_level1: TV, cate_level2: Documentary, cate_level2_desc: "纪录片" }
+  - { id: 410, cate_level1: Movie, cate_level2: Movie , cate_level2_desc: "iPad影视" }
+  - { id: 405, cate_level1: TV , cate_level2: Anime, cate_level2_desc: "动漫" }
+  - { id: 402, cate_level1: TV, cate_level2: Series, cate_level2_desc: "剧集(分集）" }
+  - { id: 411, cate_level1: TV, cate_level2: Series, cate_level2_desc: "剧集(合集）" }
+  - { id: 403, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "综艺" }
+  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "音乐MV" }
+  - { id: 407, cate_level1: Sport, cate_level2: Sport, cate_level2_desc: "体育" }
+  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "无损音乐" }
+  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "其他" }
+  - { id: 412, cate_level1: TV, cate_level2: Series, cate_level2_desc: "海外剧集(分集）" }
+  - { id: 413, cate_level1: TV, cate_level2: Series, cate_level2_desc: "海外剧集(合集）" }
+  - { id: 414, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "海外综艺(分集）" }
+  - { id: 415, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "海外综艺(合集）" }
 
 userinfo:
   path: https://hdsky.me/rules.php
@@ -44,6 +44,9 @@ userinfo:
     username:
       default_value: '未知用户名'
       selector: a[href^="userdetails.php?id="]
+      filters:
+        - name: split
+          args: [" ", 0]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -137,8 +140,11 @@ torrents:
       selector: form[action*="/download.php?id="]
       attribute: action
     imdbid:
-      selector: div.imdb_100 > a
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
+      filters:
+        - name: re_search
+          args: [ 'tt\d+',0 ]
     date_elapsed:
       # 站点设置，已去时间 (默认)
       selector: td:nth-child(4) > span[title]
