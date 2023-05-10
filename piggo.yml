@@ -1,5 +1,5 @@
 id: piggo
-name: 猪猪
+name: Piggo
 domain: https://piggo.me/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/piggo.yml

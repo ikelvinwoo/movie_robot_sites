@@ -1,5 +1,5 @@
 id: pttime
-name: PT时间
+name: PTTime
 domain: https://www.pttime.org/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/pttime.yml
@@ -94,7 +94,7 @@ userinfo:
 search:
   paths:
     - path: torrents.php
-      categories: [ "!", 401, 402, 403, 404, 405, 406, 407, 408, 409, 411, 412, 413, 420, 430, 431, 432, 450, 451, 490 ]
+      categories: [ 401, 402, 403, 404, 405, 406, 407, 408, 409, 411, 412, 413, 420, 430, 431, 432, 450, 451, 490 ]
     - path: adults.php
       categories: [ 440, 441, 442, 443, 444, 445, 446, 447, 448, 449 ]
   query:
