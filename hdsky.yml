@@ -1,5 +1,5 @@
 id: hdsky
-name: 天空
+name: HDSky
 domain: https://hdsky.me/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/hdsky.yml

@@ -9,23 +9,23 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - {id: 401, cate_level1: Movie, cate_level2: Movies, desc: "大众电影"}
-  - {id: 402, cate_level1: TV, cate_level2: Series, desc: "大众剧集"}
-  - {id: 403, cate_level1: TV, cate_level2: Shows, desc: "大众综艺"}
-  - {id: 404, cate_level1: TV, cate_level2: Documentary, desc: "大众纪录片"}
-  - {id: 405, cate_level1: TV, cate_level2: Anime, desc: "大众动漫"}
-  - {id: 407, cate_level1: TV, cate_level2: TV/Sport, desc: "大众体育"}
-  - {id: 406, cate_level1: Music, cate_level2: MusicVideo, desc: "大众MV"}
-  - {id: 408, cate_level1: Music, cate_level2: Audio, desc: "大众音乐"}
-  - {id: 409, cate_level1: Music, cate_level2: Other, desc: "大众其他"}
-  - {id: 912, cate_level1: Music, cate_level2: Other, desc: "大众有声"}
+  - {id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "大众电影"}
+  - {id: 402, cate_level1: TV, cate_level2: Series, cate_level2_desc: "大众剧集"}
+  - {id: 403, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "大众综艺"}
+  - {id: 404, cate_level1: TV, cate_level2: Documentary, cate_level2_desc: "大众纪录片"}
+  - {id: 405, cate_level1: TV, cate_level2: Anime, cate_level2_desc: "大众动漫"}
+  - {id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "大众体育"}
+  - {id: 406, cate_level1: Music, cate_level2: MusicVideo, cate_level2_desc: "大众MV"}
+  - {id: 408, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "大众音乐"}
+  - {id: 409, cate_level1: Music, cate_level2: Other, cate_level2_desc: "大众其他"}
+  - {id: 912, cate_level1: Music, cate_level2: Other, cate_level2_desc: "大众有声"}
   # kids zone
-  - {id: 909, cate_level1: Movie, cate_level2: Movies, desc: "儿童电影"}
-  - {id: 907, cate_level1: TV, cate_level2: Audio, desc: "儿童纪录片"}
-  - {id: 908, cate_level1: TV, cate_level2: TV Series, desc: "儿童剧集"}
-  - {id: 911, cate_level1: Music, cate_level2: Movies, desc: "儿童音乐"}
-  - {id: 905, cate_level1: Music, cate_level2: MusicVideo, desc: "儿童有声"}
-  - {id: 910, cate_level1: Music, cate_level2: Movies, desc: "儿童绘本"}
+  - {id: 909, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "儿童电影"}
+  - {id: 907, cate_level1: TV, cate_level2: Audio, cate_level2_desc: "儿童纪录片"}
+  - {id: 908, cate_level1: TV, cate_level2: TV Series, cate_level2_desc: "儿童剧集"}
+  - {id: 911, cate_level1: Music, cate_level2: Movies, cate_level2_desc: "儿童音乐"}
+  - {id: 905, cate_level1: Music, cate_level2: MusicVideo, cate_level2_desc: "儿童有声"}
+  - {id: 910, cate_level1: Music, cate_level2: Movies, cate_level2_desc: "儿童绘本"}
 
 
 userinfo:
@@ -134,26 +134,27 @@ torrents:
     download:
       selector: a[href^="download.php?id="]
       attribute: href
-    imdbid:
-      selector: a[href*="imdb.com/title/tt"]
-      attribute: href
-      filters:
-        - name: re_search
-          args: [ 'tt\d+',0 ]
-    date_elapsed:
-      # 站点设置，已去时间 (默认)
-      selector: td:nth-child(4) > span[title]
-      attribute: title
-      optional: true
-    date_added:
-      # 站点设置，实际时间
-      selector: td:nth-child(4):not(:has(span))
-      optional: true
+    # imdbid:
+    #   selector: a[href*="imdb.com/title/tt"]
+    #   attribute: href
+    #   filters:
+    #     - name: re_search
+    #       args: [ 'tt\d+',0 ]
+    # date_elapsed:
+    #   # 站点设置，已去时间 (默认)
+    #   selector: td:nth-child(4) > span[title]
+    #   attribute: title
+    #   optional: true
+    # date_added:
+    #   # 站点设置，实际时间
+    #   selector: td:nth-child(4):not(:has(span))
+    #   optional: true
     date:
-      text: "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}"
+      # text: "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}"
+      text: "now"
       filters:
         - name: dateparse
-          args: ["%Y年 %m月", "%m月 %d日", "%d日 %H时", "%H时 %M分", "%M分 %S秒"]
+          args: "%Y-%m-%d %H:%M:%S"
     size:
       selector: td:nth-child(5)
     seeders:
@@ -176,26 +177,27 @@ torrents:
         img.pro_free2up: 2
         img.pro_2up: 2
         "*": 1
-    free_deadline:
-      default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
-      default_value_format: ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"]
-      selector: img.pro_free,img.pro_free2up
-      attribute: onmouseover
-      filters:
-        - name: re_search
-          args: [ ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"], 0 ]
-        - name: dateparse
-          args: ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"]
+    # free_deadline:
+    #   default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
+    #   default_value_format: ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"]
+    #   selector: img.pro_free,img.pro_free2up
+    #   attribute: onmouseover
+    #   filters:
+    #     - name: re_search
+    #       args: [ ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"], 0 ]
+    #     - name: dateparse
+    #       args: ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"]
     tags:
       selectors: td.embedded > span[style]
-    checked:
-      selector: td.embedded > span[title]:has(svg[viewBox='0 0 1413 1024'])
-      attribute: title
+    # checked:
+    #   selector: td.embedded > span[title]:has(svg[viewBox='0 0 1413 1024'])
+    #   attribute: title
     subject:
       selector: td.embedded:has(a[href^="details.php?id="])
       remove: a,img,div,span,font,b
     description:
-      text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %} {% if fields['checked'] %}❓{% else %}✅{% endif %}"
+      # text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %} {% if fields['checked'] %}❓{% else %}✅{% endif %}"
+      text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %}"
     minimumratio:
       case:
         img.hitandrun: 1
