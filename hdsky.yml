@@ -10,20 +10,20 @@ login:
 
 category_mappings:
   - { id: 401, cate_level1: Movie, cate_level2: Movie, cate_level2_desc: "电影" }
-  - { id: 404, cate_level1: TV, cate_level2: Documentary, cate_level2_desc: "纪录片" }
   - { id: 410, cate_level1: Movie, cate_level2: Movie , cate_level2_desc: "iPad影视" }
-  - { id: 405, cate_level1: TV , cate_level2: Anime, cate_level2_desc: "动漫" }
   - { id: 402, cate_level1: TV, cate_level2: Series, cate_level2_desc: "剧集(分集）" }
   - { id: 411, cate_level1: TV, cate_level2: Series, cate_level2_desc: "剧集(合集）" }
-  - { id: 403, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "综艺" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "音乐MV" }
-  - { id: 407, cate_level1: Sport, cate_level2: Sport, cate_level2_desc: "体育" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "无损音乐" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "其他" }
   - { id: 412, cate_level1: TV, cate_level2: Series, cate_level2_desc: "海外剧集(分集）" }
   - { id: 413, cate_level1: TV, cate_level2: Series, cate_level2_desc: "海外剧集(合集）" }
+  - { id: 403, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "综艺" }
   - { id: 414, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "海外综艺(分集）" }
   - { id: 415, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "海外综艺(合集）" }
+  - { id: 404, cate_level1: TV, cate_level2: Documentary, cate_level2_desc: "纪录片" }
+  - { id: 405, cate_level1: TV , cate_level2: Anime, cate_level2_desc: "动漫" }
+  - { id: 407, cate_level1: TV, cate_level2: Sport, cate_level2_desc: "体育" }
+  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "音乐MV" }
+  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "无损音乐" }
+  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "其他" }
 
 userinfo:
   path: https://hdsky.me/rules.php
@@ -83,7 +83,6 @@ userinfo:
 search:
   paths:
     - path: torrents.php
-      categories: [ "!", 401, 404, 410, 405, 402, 411, 403, 406, 407, 408, 409, 412, 413, 414, 415 ]
       method: get
   query:
     $raw: "{% for c in query.cates %}cat{{c}}=1&{% endfor %}"
