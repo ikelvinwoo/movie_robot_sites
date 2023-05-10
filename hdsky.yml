@@ -83,6 +83,7 @@ userinfo:
 search:
   paths:
     - path: torrents.php
+      categories: [ "!", 401, 404, 410, 405, 402, 411, 403, 406, 407, 408, 409, 412, 413, 414, 415 ]
       method: get
   query:
     $raw: "{% for c in query.cates %}cat{{c}}=1&{% endfor %}"
