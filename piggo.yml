@@ -96,7 +96,7 @@ search:
     spstate: "{% if query.free %}2{% else %}0{% endif %}"
     # 0 title, 1 descr, 3 uploader, 4 imdburl (searching imdburl does not work with tt1234567, but descr is good)
     search_area: "{% if query.imdb_id %}4{% else %}0{%endif%}"
-    # 0 AND, 1 OR, 2 exact
+    # 0 AND, 2 exact
     search_mode: 0
     sort: "{{ query.sort }}"
     type: "{{ query.type }}"
@@ -104,7 +104,7 @@ search:
 
 torrents:
   list:
-    selector: table.torrents > tr:has(table):not(:has(span[title='置顶促销']))
+    selector: table.torrents > tr:has(table.torrentname)
   fields:
     id:
       selector: a[href^="details.php?id="]
@@ -153,7 +153,7 @@ torrents:
       text: "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}"
       filters:
         - name: dateparse
-          args: "%Y-%m-%d %H:%M:%S"
+          args: ["%Y年 %m月", "%m月 %d日", "%d日 %H时", "%H时 %M分", "%M分 %S秒"]
     size:
       selector: td:nth-child(5)
     seeders:
@@ -178,18 +178,18 @@ torrents:
         "*": 1
     free_deadline:
       default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
-      default_value_format: '%Y-%m-%d %H:%M:%S.%f'
+      default_value_format: ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"]
       selector: img.pro_free,img.pro_free2up
       attribute: onmouseover
       filters:
         - name: re_search
-          args: [ '\d+-\d+-\d+ \d+:\d+:\d+', 0 ]
+          args: [ ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"], 0 ]
         - name: dateparse
-          args: "%Y-%m-%d %H:%M:%S"
+          args: ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"]
     tags:
       selectors: td.embedded > span[style]
     checked:
-      selector: td.embedded > span[title]:has(svg[viewBox='0 0 1024 1024'])
+      selector: td.embedded > span[title]:has(svg[viewBox='0 0 1413 1024'])
       attribute: title
     subject:
       selector: td.embedded:has(a[href^="details.php?id="])
