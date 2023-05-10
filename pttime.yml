@@ -1,40 +1,43 @@
 id: pttime
-name: pt时间
+name: PT时间
 domain: https://www.pttime.org/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/pttime.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies(电影)" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series(电视剧)" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows(综艺)" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries(纪录片)" }
-  - { id: 405, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Sport(体育、竞技、武术及相关)" }
-  - { id: 406, cate_level1: Game, cate_level2: Game, cate_level2_desc: "Games(游戏及相关)" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "Music(音乐、专辑、MV、演唱会)" }
-  - { id: 409, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "Art(舞蹈、歌剧、戏曲、相声、评书等)" }
-  - { id: 411, cate_level1: Other, cate_level2: Study, cate_level2_desc: "Science(科学、知识、技能)" }
-  - { id: 412, cate_level1: Other, cate_level2: Study, cate_level2_desc: "School(应试、考级、初中以上教育)" }
-  - { id: 413, cate_level1: Other, cate_level2: Book, cate_level2_desc: "Book(书籍、有声书)" }
-  - { id: 420, cate_level1: Other, cate_level2: Book, cate_level2_desc: "Code(IT、编程、大数据、人工智能）" }
-  - { id: 430, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animate(3D动画、2.5次元)" }
-  - { id: 431, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "ACGN(二次元)" }
-  - { id: 432, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Baby(婴幼、早教、小学及相关)" }
+  - { id: 401, cate_level1: Movies, cate_level2: Movies, cate_level2_desc: "Movies(电影)" }
+  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV(电视剧)" }
+  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV(综艺)" }
+  - { id: 404, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Documentaries(纪录片)" }
+  - { id: 405, cate_level1: Other, cate_level2: Sport, cate_level2_desc: "Sport(体育)" }
+  - { id: 406, cate_level1: Game, cate_level2: Game, cate_level2_desc: "Games(游戏)" }
+  - { id: 408, cate_level1: Music, cate_level2: Music,cate_level2_ desc: "Music(音乐)" }
+  - { id: 409, cate_level1: Music, cate_level2: Art,cate_level2_ desc: "Art(曲艺)" }
+  - { id: 411, cate_level1: Other, cate_level2: Science, cate_level2_desc: "Science(科普)" }
+  - { id: 412, cate_level1: Study, cate_level2: Exam, cate_level2_desc: "Exam(考试)" }
+  - { id: 413, cate_level1: Study, cate_level2: Book, cate_level2_desc: "Book(书刊)" }
+  - { id: 420, cate_level1: Study, cate_level2: Coding, cate_level2_desc: "Coding(编程）" }
+  - { id: 430, cate_level1: Anime , cate_level2: 3DAnime, cate_level2_desc: "3DAnime(3D动画)" }
+  - { id: 431, cate_level1: Anime , cate_level2: ACGN, cate_level2_desc: "ACGN(二次元)" }
+  - { id: 432, cate_level1: Other, cate_level2: Baby, cate_level2_desc: "Baby(婴幼)" }
+  - { id: 450, cate_level1: Other, cate_level2: Resource, cate_level2_desc: "Resource(素材)" }
+  - { id: 451, cate_level1: Other, cate_level2: Software, cate_level2_desc: "Software(软件)" }
+  - { id: 490, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Other(其它)" }
+  # 9kg
   - { id: 440, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-AV(步兵/无码)" }
   - { id: 441, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-Sex(骑兵/有码)" }
   - { id: 442, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-III(三级片、限制级)" }
   - { id: 443, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H动漫" }
   - { id: 444, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H游戏" }
-  - { id: 445, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H图书(文字、图书)" }
+  - { id: 445, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H图书" }
   - { id: 446, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H写真" }
-  - { id: 447, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H合集" }
-  - { id: 448, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H-VR/AR/元宇宙" }
-  - { id: 450, cate_level1: Other, cate_level2: Book, cate_level2_desc: "Resource(资源、素材、模板)" }
-  - { id: 451, cate_level1: Other, cate_level2: PC/Software, cate_level2_desc: "Software(软件、系统、 程序、APP等)" }
-  - { id: 490, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Other(其它)" }
+  - { id: 447, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H音乐" }
+  - { id: 448, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H综合" }
+  - { id: 449, cate_level1: AV, cate_level2: AV, cate_level2_desc: "9kg-H同性" }
 
 userinfo:
   path: https://www.pttime.org/index.php
@@ -54,7 +57,7 @@ userinfo:
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="userdetails.php?id="][class="User_Name"]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -91,9 +94,9 @@ userinfo:
 search:
   paths:
     - path: torrents.php
-      categories: [ "!", 440, 441, 442, 443, 444, 445, 446, 447, 448 ]
+      categories: [ "!", 401, 402, 403, 404, 405, 406, 407, 408, 409, 411, 412, 413, 420, 430, 431, 432, 450, 451, 490 ]
     - path: adults.php
-      categories: [ 440, 441, 442, 443, 444, 445, 446, 447, 448 ]
+      categories: [ 440, 441, 442, 443, 444, 445, 446, 447, 448, 449 ]
   query:
     $raw: "{% for c in query.cates %}cat{{c}}=1&{% endfor %}"
     search: "{% if query.imdb_id %}{{query.imdb_id}}{%else%}{{query.keyword}}{% endif %}"
@@ -146,7 +149,7 @@ torrents:
       selector: img.pr5
       attribute: src
     imdbid:
-      selector: div.imdb_100 > a
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
       filters:
         - name: re_search
