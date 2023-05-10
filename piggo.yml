@@ -2,27 +2,30 @@ id: piggo
 name: 猪猪
 domain: https://piggo.me/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/htnanako/movie-robot-public/main/app/sites/piggo.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/piggo.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - {id: 401, cate_level1: Movie, cate_level2: Movies, desc: "Movies/电影"}
-  - {id: 402, cate_level1: TV, cate_level2: TV Series, desc: "TV Series/电视剧"}
-  - {id: 403, cate_level1: TV, cate_level2: TV Shows, desc: "TV Shows/综艺"}
-  - {id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, desc: "Documentaries/纪录片"}
-  - {id: 405, cate_level1: Anime, cate_level2: TV/Anime, desc: "Animations/动漫"}
-  - {id: 406, cate_level1: Music, cate_level2: MusicVideo, desc: "MusicVideo/MV"}
-  - {id: 407, cate_level1: TV, cate_level2: TV/Sport, desc: "Sports/体育"}
-  - {id: 408, cate_level1: Music, cate_level2: Audio, desc: "Music/音乐"}
-  - {id: 409, cate_level1: Other, cate_level2: Other, desc: "Misc/其他"}
+  - {id: 401, cate_level1: Movie, cate_level2: Movies, desc: "大众电影"}
+  - {id: 402, cate_level1: TV, cate_level2: Series, desc: "大众剧集"}
+  - {id: 403, cate_level1: TV, cate_level2: Shows, desc: "大众综艺"}
+  - {id: 404, cate_level1: TV, cate_level2: Documentary, desc: "大众纪录片"}
+  - {id: 405, cate_level1: TV, cate_level2: Anime, desc: "大众动漫"}
+  - {id: 407, cate_level1: TV, cate_level2: TV/Sport, desc: "大众体育"}
+  - {id: 406, cate_level1: Music, cate_level2: MusicVideo, desc: "大众MV"}
+  - {id: 408, cate_level1: Music, cate_level2: Audio, desc: "大众音乐"}
+  - {id: 409, cate_level1: Other, cate_level2: Other, desc: "大众其他"}
+  - {id: 912, cate_level1: Other, cate_level2: Other, desc: "大众有声"}
   # kids zone
-  - {id: 905, cate_level1: Music, cate_level2: MusicVideo, desc: "MusicVideo/MV"}
-  - {id: 907, cate_level1: Music, cate_level2: Audio, desc: "Music/音乐"}
-  - {id: 908, cate_level1: TV, cate_level2: TV Series, desc: "TV Series/剧集"}
-  - {id: 909, cate_level1: Movie, cate_level2: Movies, desc: "Movies/电影"}
+  - {id: 909, cate_level1: Movie, cate_level2: Movies, desc: "儿童电影"}
+  - {id: 907, cate_level1: TV, cate_level2: Audio, desc: "儿童纪录片"}
+  - {id: 908, cate_level1: TV, cate_level2: TV Series, desc: "儿童剧集"}
+  - {id: 911, cate_level1: Music, cate_level2: Movies, desc: "儿童音乐"}
+  - {id: 905, cate_level1: Music, cate_level2: MusicVideo, desc: "儿童有声"}
+  - {id: 910, cate_level1: Other, cate_level2: Movies, desc: "儿童绘本"}
 
 
 userinfo:
@@ -81,9 +84,9 @@ userinfo:
 search:
   paths:
     - path: torrents.php
-      categories: [ 401, 402, 403, 404, 405, 406, 407, 408, 409 ]
+      categories: [ 401, 402, 403, 404, 405, 406, 407, 408, 409, 912 ]
     - path: special.php
-      categories: [ 905, 907, 908, 909 ]
+      categories: [ 909, 907, 908, 911, 905, 910 ]
   query:
     $raw: "{% for c in query.cates %}cat{{c}}=1&{% endfor %}"
     search: "{% if query.imdb_id %}{{query.imdb_id}}{%else%}{{query.keyword}}{% endif %}"
@@ -199,5 +202,5 @@ torrents:
         "*": 0
     minimumseedtime:
       case:
-        img.hitandrun: 172800
+        img.hitandrun: 1728000
         "*": 0
