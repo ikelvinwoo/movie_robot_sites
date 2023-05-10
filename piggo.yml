@@ -135,7 +135,7 @@ torrents:
       selector: a[href^="download.php?id="]
       attribute: href
     imdbid:
-      selector: div.imdb_100 > a
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
       filters:
         - name: re_search
