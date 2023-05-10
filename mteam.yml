@@ -1,14 +1,15 @@
 id: mteam
-name: 馒头
+name: M-Team
 domain: https://kp.m-team.cc/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/htnanako/movie-robot-public/main/app/sites/mteam.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/mteam.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
+  # 综合
   - { id: 401, cate_level1: Movie, cate_level2: Movies/SD, cate_level2_desc: "Movie(電影)/SD" }
   - { id: 419, cate_level1: Movie, cate_level2: Movies/HD, cate_level2_desc: "Movie(電影)/HD" }
   - { id: 420, cate_level1: Movie, cate_level2: Movies/DVD, cate_level2_desc: "Movie(電影)/DVDiSo" }
@@ -25,9 +26,11 @@ category_mappings:
   - { id: 423, cate_level1: Game, cate_level2: PC/Games, cate_level2_desc: "PCGame(PC遊戲)" }
   - { id: 427, cate_level1: Other, cate_level2: Books, cate_level2_desc: "eBook(電子書)" }
   - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc(其他)" }
+  # 音乐
   - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MV(演唱)" }
   - { id: 408, cate_level1: Music, cate_level2: Audio/Other, cate_level2_desc: "Music(AAC/ALAC)" }
   - { id: 434, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "Music(無損)" }
+  # 成人
   - { id: 410, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "AV(有碼)/HD Censored" }
   - { id: 429, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "AV(無碼)/HD Uncensored" }
   - { id: 424, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "AV(有碼)/SD Censored" }
@@ -39,9 +42,10 @@ category_mappings:
   - { id: 436, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "AV(網站)/0Day" }
   - { id: 425, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "IV(寫真影集)/Video Collection" }
   - { id: 433, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "IV(寫真圖集)/Picture Collection" }
-  - { id: 411, cate_level1: Game, cate_level2: XXX, cate_level2_desc: "H-Game(遊戲)" }
-  - { id: 412, cate_level1: Anime, cate_level2: XXX, cate_level2_desc: "H-Anime(動畫)" }
-  - { id: 413, cate_level1: Anime, cate_level2: XXX, cate_level2_desc: "H-Comic(漫畫)" }
+  - { id: 411, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "H-Game(遊戲)" }
+  - { id: 412, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "H-Anime(動畫)" }
+  - { id: 413, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "H-Comic(漫畫)" }
+  - { id: 440, cate_level1: AV, cate_level2: XXX, cate_level2_desc: "H-Homo(同性)" }
 
 userinfo:
   path: https://kp.m-team.cc/index.php
@@ -98,9 +102,9 @@ userinfo:
 search:
   paths:
     - path: torrents.php
-      categories: [ "!", 410, 429, 424, 430, 426, 437, 431, 432, 436, 425, 433, 411, 412, 413, 406, 408, 434 ]
+      categories: [ "!", 401, 419, 420, 421, 439, 403, 402, 435, 438, 404, 405, 407, 422, 423, 427, 409 ]
     - path: adult.php
-      categories: [ 410, 411, 412, 413, 429, 424, 430, 426, 437, 431, 432, 436, 425, 433]
+      categories: [ 410, 429, 424, 430, 426, 437, 431, 432, 436, 425, 433, 411, 412, 413, 440 ]
     - path: music.php
       categories: [ 406, 408, 434 ]
   query:
