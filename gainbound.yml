@@ -1,5 +1,5 @@
 id: gainbound
-name: 丐帮
+name: GainBound
 domain: https://gainbound.net/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/gainbound.yml
