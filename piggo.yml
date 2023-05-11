@@ -149,18 +149,18 @@ torrents:
     #   # 站点设置，实际时间
     #   selector: td:nth-child(4):not(:has(span))
     #   optional: true
-    date:
-      # text: "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}"
-      text: "now"
-      filters:
-        - name: dateparse
-          args: "%Y-%m-%d %H:%M:%S"
+    # date:
+    #   # text: "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}"
+    #   text: "now"
+    #   filters:
+    #     - name: dateparse
+    #       args: "%Y-%m-%d %H:%M:%S"
     size:
       selector: td:nth-child(5)
     seeders:
       selector: td:nth-child(6)
     leechers:
-      selector: td:nth-child(7)
+      selector: td:nth-child(7) > a[href^="details.php?id"]
     grabs:
       selector: td:nth-child(8)
     downloadvolumefactor:
@@ -187,17 +187,17 @@ torrents:
     #       args: [ ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"], 0 ]
     #     - name: dateparse
     #       args: ["%Y年%m月", "%m月%d日", "%d日%H时", "%H时%M分", "%M分%S秒"]
-    tags:
-      selectors: td.embedded > span[style]
+    # tags:
+    #   selectors: td.embedded > span[style]
     # checked:
     #   selector: td.embedded > span[title]:has(svg[viewBox='0 0 1413 1024'])
     #   attribute: title
-    subject:
-      selector: td.embedded:has(a[href^="details.php?id="])
-      remove: a,img,div,span,font,b
-    description:
-      # text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %} {% if fields['checked'] %}❓{% else %}✅{% endif %}"
-      text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %}"
+    # subject:
+    #   selector: td.embedded:has(a[href^="details.php?id="])
+    #   remove: a,img,div,span,font,b
+    # description:
+    #   # text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %} {% if fields['checked'] %}❓{% else %}✅{% endif %}"
+    #   text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %}"
     minimumratio:
       case:
         img.hitandrun: 1

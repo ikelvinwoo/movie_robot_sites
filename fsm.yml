@@ -1,0 +1,150 @@
+id: fsm
+name: FSM
+domain: https://fsm.name/
+encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/fsm.yml
+
+login:
+  test:
+    selector: a[onclick="logout()"]
+
+category_mappings:
+  - { id: 0, cate_level1: AV, cate_level2: AV, cate_level2_desc: "全部" }
+  - { id: 1, cate_level1: AV, cate_level2: AV, cate_level2_desc: "日本AV" }
+  - { id: 2, cate_level1: AV, cate_level2: AV, cate_level2_desc: "国产视频" }
+  - { id: 3, cate_level1: AV, cate_level2: AV, cate_level2_desc: "写真" }
+  - { id: 4, cate_level1: AV, cate_level2: AV, cate_level2_desc: "黄油" }
+  - { id: 5, cate_level1: AV, cate_level2: AV, cate_level2_desc: "里番" }
+  - { id: 6, cate_level1: AV, cate_level2: AV, cate_level2_desc: "黄色漫画" }
+  - { id: 7, cate_level1: AV, cate_level2: AV, cate_level2_desc: "欧美视频" }
+  - { id: 8, cate_level1: AV, cate_level2: AV, cate_level2_desc: "其他" }
+
+userinfo:
+  path: https://fsm.name/Index
+  item:
+    selector: body[class="font bgColor hiddenX"]
+  fields:
+    uid:
+      default_value: 0
+      selector: a[href^="/Users/profile?uid="]
+      attribute: href
+      filters:
+        - name: re_search
+          args: [ '\d+', 0 ]
+    user_group:
+      default_value: ''
+      selector: a[href^="/Users/profile?uid="]
+    username:
+      default_value: '未知用户名'
+      selector: a[href^="#"]
+      filters:
+        - name: split
+          args: [" ", 1]
+    share_ratio:
+      default_value: ''
+      selector: span[class^="badge bg-success"]
+      filters:
+        - name: split
+          args: [" ", 1]
+    uploaded:
+      default_value: ''
+      selector: div.text-bg-info span:nth-of-type(3)
+      filters:
+        - name: replace
+          args: ["上传量：", ""]
+    downloaded:
+      default_value: ''
+      selector: div.text-bg-info span.bg-danger
+      filters:
+        - name: replace
+          args: ["下载量：", ""]
+    seeding:
+      default_value: ''
+      selector: div.text-bg-info span:nth-of-type(5)
+      filters:
+        - name: replace
+          args: ["当前上传：", ""]
+    leeching:
+      default_value: ''
+      selector: div.text-bg-info span:nth-of-type(6)
+      filters:
+        - name: replace
+          args: ["当前下载：", ""]
+    vip_group:
+      case:
+        a[class^="VIP"]: true
+        "*": false
+search:
+  paths:
+    - path: Torrents
+      method: get
+  query:
+    type: "0"
+    keyword: "{{query.keyword}}"
+
+torrents:
+  list:
+    selector: div.table-responsive > table.table > tbody > tr
+  fields:
+    id:
+      selector: a[href^="/Torrents/details?tid="]
+      attribute: href
+      filters:
+        - name: re_search
+          args: [ '\d+', 0 ]
+    title_default:
+      selector: a[href^="/Torrents/details?tid="]
+    title:
+      text: "{{ fields['title_default'] }}"
+    category:
+      selector: a[href^="/Torrents?type="]
+      attribute: href
+      filters:
+        - name: replace
+          args: [ "/Torrents?", "" ]
+        - name: querystring
+          args: type
+    details:
+      selector: a[href^="/Torrents/details?tid="]
+      attribute: href
+    download:
+      selector: a[href^="/Torrents/download?passkey="]
+      attribute: href
+    # date_elapsed:
+    #   # 站点设置，已去时间 (默认)
+    #   selector: td:nth-child(4) > span[title]
+    #   attribute: title
+    #   optional: true
+    # date_added:
+    #   # 站点设置，实际时间
+    #   selector: td:nth-child(4):not(:has(span))
+    #   optional: true
+    # date:
+    #   # text: "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}"
+    #   text: "now"
+    #   filters:
+    #     - name: dateparse
+    #       args: "%Y-%m-%d %H:%M:%S"
+    size:
+      selector: td:nth-child(7)
+    seeders:
+      selector: td:nth-child(8)
+    leechers:
+      selector: td:nth-child(9)
+    grabs:
+      selector: td:nth-child(10)
+    downloadvolumefactor:
+      case:
+        "*": 0
+    uploadvolumefactor:
+      case:
+        "*": 1
+    free_deadline:
+      default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
+      default_value_format: '%Y-%m-%d %H:%M:%S'
+      selector: td:nth-child(3) > div > text.desFont
+      filters:
+        - name: replace
+          args: ["限时：", ""]
+        - name: dateparse
+          args: "%Y-%m-%d %H:%M:%S"

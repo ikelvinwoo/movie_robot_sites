@@ -1,27 +1,21 @@
-id: chdbits
-name: CHDBits
-domain: https://chdbits.co/
+id: opencd
+name: OpenCD
+domain: https://open.cd/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/chdbits.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/opencd.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies" }
-  - { id: 404, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Documentaries" }
-  - { id: 405, cate_level1: Anime, cate_level2: Anime, cate_level2_desc: "Animations" }
-  - { id: 402, cate_level1: TV, cate_level2: Series, cate_level2_desc: "TV Series" }
-  - { id: 403, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "TV Shows" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Music Videos" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "HQ Audio" }
-  - { id: 410, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Games" }
-  - { id: 409, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Misc" }
+  - { id: 408, cate_level1: Music, cate_level2: Music, cate_level2_desc: "音乐" }
+  - { id: 402, cate_level1: Music, cate_level2: Music, cate_level2_desc: "电视剧" }
+  - { id: 405, cate_level1: Music, cate_level2: Music, cate_level2_desc: "动漫" }
+  - { id: 409, cate_level1: Music, cate_level2: Music, cate_level2_desc: "其他" }
 
 userinfo:
-  path: https://chdbits.co//rules.php
+  path: https://open.cd/index.php
   item:
     selector: table[id="info_block"]
   fields:
@@ -38,7 +32,7 @@ userinfo:
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="userdetails.php?id="][class="User_Name"]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -55,7 +49,7 @@ userinfo:
           args: [ '无限','inf' ]
     downloaded:
       default_value: 0
-      selector: font[class="color_downloaded"]
+      selector: td:nth-of-type(2) div:nth-of-type(2) font:nth-of-type(4)
       method: next_sibling
       filters:
         - name: replace
@@ -93,56 +87,58 @@ search:
 
 torrents:
   list:
-    selector: table.torrents > tr:has(table)
+    selector: table.torrents > tr:has(table.torrentname)
   fields:
     id:
-      selector: a[href^="details.php?id="]
+      selector: a[href^="plugin_details.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
+    title_default:
+      selector: a[href^="plugin_details.php?id="]
+    title_optional:
+      optional: true
+      selector: a[title][href^="plugin_details.php?id="]
+      attribute: title
+    title:
+      text: "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
     category:
       selector: a[href^="?cat="]
       attribute: href
       filters:
+        - name: replace
+          args: [ "?", "" ]
         - name: querystring
           args: cat
-    title_default:
-      selector: a[href^="details.php?id="]
-    title_optional:
-      optional: true
-      selector: a[title][href^="details.php?id="]
-      attribute: title
-    title:
-      text: "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
     details:
-      selector: a[href^="details.php?id="]
+      selector: a[href^="plugin_details.php?id="]
       attribute: href
     download:
       selector: a[href^="download.php?id="]
       attribute: href
-    size:
-      selector: td:nth-child(5)
-    grabs:
-      selector: td:nth-child(8)
-    seeders:
-      selector: td:nth-child(6)
-    leechers:
-      selector: td:nth-child(7)
     date_elapsed:
-      # time type: time elapsed (default)
-      selector: td:nth-child(4) > span[title]
+      # 站点设置，已去时间 (默认)
+      selector: td:nth-child(6) > span[title]
       attribute: title
       optional: true
     date_added:
-      # time added
-      selector: td:nth-child(4):not(:has(span))
+      # 站点设置，实际时间
+      selector: td:nth-child(6):not(:has(span))
       optional: true
     date:
       text: "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}"
       filters:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
+    size:
+      selector: td:nth-child(7)
+    seeders:
+      selector: td:nth-child(8)
+    leechers:
+      selector: td:nth-child(9)
+    grabs:
+      selector: td:nth-child(10)
     downloadvolumefactor:
       case:
         img.pro_free: 0
@@ -160,25 +156,21 @@ torrents:
     free_deadline:
       default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
       default_value_format: '%Y-%m-%d %H:%M:%S.%f'
-      selector: 'td[class] > span[title]'
-      attribute: title
-      filters:
-        - name: dateparse
-          args: "%Y-%m-%d %H:%M:%S"
-    hr_days:
-      defualt_value: 0
-      selector: div.circle > div.circle-text
+      selector: img.pro_free,img.pro_free2up
+      attribute: onmouseover
       filters:
         - name: re_search
-          args: [ '\d',0 ]
-    minimumratio:
-      text: "{% if fields[ 'hr_days' ] %}999999{% else %}0{% endif %}"
-    minimumseedtime:
-      text: "{% if fields[ 'hr_days' ] %}{{ (fields[ 'hr_days' ]|int)*86400 }}{% else %}0{% endif %}"
-    tags:
-      selector: font.subtitle > div
-    subject:
-      selector: font.subtitle
-      remove: div
+          args: [ '\d+-\d+-\d+ \d+:\d+:\d+', 0 ]
+        - name: dateparse
+          args: "%Y-%m-%d %H:%M:%S"
+    # subject:
+    #   selector: td.embedded
+    #   contents: -1
+    # tags:
+    #   selectors: a[href^="torrents.php?tags="]
+    #   attribute: title
+    # description:
+    #   text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %}"
     description:
-      text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags'] }}{% else %}{{ fields['subject'] }}{% endif %}"
+      selector: td:nth-child(2) > table > tr > td.embedded
+      contents: -1

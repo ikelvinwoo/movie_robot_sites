@@ -1,44 +1,43 @@
-id: chdbits
-name: CHDBits
-domain: https://chdbits.co/
+id: ubits
+name: UBits
+domain: https://ubits.club/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/chdbits.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/ubits.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies" }
-  - { id: 404, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Documentaries" }
-  - { id: 405, cate_level1: Anime, cate_level2: Anime, cate_level2_desc: "Animations" }
-  - { id: 402, cate_level1: TV, cate_level2: Series, cate_level2_desc: "TV Series" }
-  - { id: 403, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "TV Shows" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Music Videos" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "HQ Audio" }
-  - { id: 410, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Games" }
-  - { id: 409, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Misc" }
+  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "电影" }
+  - { id: 404, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "纪录片" }
+  - { id: 405, cate_level1: Anime, cate_level2: Anime, cate_level2_desc: "动漫" }
+  - { id: 402, cate_level1: TV, cate_level2: Series, cate_level2_desc: "剧集" }
+  - { id: 403, cate_level1: TV , cate_level2: Shows, cate_level2_desc: "综艺" }
+  - { id: 409, cate_level1: Music , cate_level2: Music, cate_level2_desc: "MV" }
+  - { id: 407, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "体育" }
+  - { id: 406, cate_level1: Music, cate_level2: Music,cate_level2_ desc: "音乐" }
+  - { id: 408, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "其他" }
 
 userinfo:
-  path: https://chdbits.co//rules.php
+  path: https://ubits.club/rules.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://ubits.club/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://ubits.club/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://ubits.club/userdetails.php?id="][class="User_Name"]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -93,7 +92,7 @@ search:
 
 torrents:
   list:
-    selector: table.torrents > tr:has(table)
+    selector: table.torrents > tr:has(table.torrentname)
   fields:
     id:
       selector: a[href^="details.php?id="]
@@ -101,12 +100,6 @@ torrents:
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
-    category:
-      selector: a[href^="?cat="]
-      attribute: href
-      filters:
-        - name: querystring
-          args: cat
     title_default:
       selector: a[href^="details.php?id="]
     title_optional:
@@ -115,27 +108,27 @@ torrents:
       attribute: title
     title:
       text: "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
+    category:
+      selector: a[href^="?cat="]
+      attribute: href
+      filters:
+        - name: replace
+          args: [ "?", "" ]
+        - name: querystring
+          args: cat
     details:
       selector: a[href^="details.php?id="]
       attribute: href
     download:
       selector: a[href^="download.php?id="]
       attribute: href
-    size:
-      selector: td:nth-child(5)
-    grabs:
-      selector: td:nth-child(8)
-    seeders:
-      selector: td:nth-child(6)
-    leechers:
-      selector: td:nth-child(7)
     date_elapsed:
-      # time type: time elapsed (default)
+      # 站点设置，已去时间 (默认)
       selector: td:nth-child(4) > span[title]
       attribute: title
       optional: true
     date_added:
-      # time added
+      # 站点设置，实际时间
       selector: td:nth-child(4):not(:has(span))
       optional: true
     date:
@@ -143,42 +136,39 @@ torrents:
       filters:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
+    size:
+      selector: td:nth-child(5)
+    seeders:
+      selector: td:nth-child(6)
+    leechers:
+      selector: td:nth-child(7)
+    grabs:
+      selector: td:nth-child(8)
     downloadvolumefactor:
       case:
-        img.pro_free: 0
-        img.pro_free2up: 0
-        img.pro_50pctdown: 0.5
-        img.pro_50pctdown2up: 0.5
-        img.pro_30pctdown: 0.3
+        font.promotion.free: 0
+        font.promotion.twoupfree: 0
+        font.promotion.twouphalfdown: 0.5
+        font.promotion.halfdown: 0.5
+        font.promotion.thirtypercent: 0.3
+        # font.promotion.zeroupzerodown: 0
         "*": 1
     uploadvolumefactor:
       case:
-        img.pro_50pctdown2up: 2
-        img.pro_free2up: 2
-        img.pro_2up: 2
+        font.promotion.twoup: 2
+        font.promotion.twouphalfdown: 2
+        font.promotion.twoupfree: 2
         "*": 1
     free_deadline:
       default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
       default_value_format: '%Y-%m-%d %H:%M:%S.%f'
-      selector: 'td[class] > span[title]'
+      selector: td:nth-child(2) > table > tr > td.embedded > span[title]
       attribute: title
       filters:
+        - name: re_search
+          args: [ '\d+-\d+-\d+ \d+:\d+:\d+', 0 ]
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
-    hr_days:
-      defualt_value: 0
-      selector: div.circle > div.circle-text
-      filters:
-        - name: re_search
-          args: [ '\d',0 ]
-    minimumratio:
-      text: "{% if fields[ 'hr_days' ] %}999999{% else %}0{% endif %}"
-    minimumseedtime:
-      text: "{% if fields[ 'hr_days' ] %}{{ (fields[ 'hr_days' ]|int)*86400 }}{% else %}0{% endif %}"
-    tags:
-      selector: font.subtitle > div
-    subject:
-      selector: font.subtitle
-      remove: div
     description:
-      text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags'] }}{% else %}{{ fields['subject'] }}{% endif %}"
+      selector: td:nth-child(2) > table > tr > td.embedded
+      contents: -1
