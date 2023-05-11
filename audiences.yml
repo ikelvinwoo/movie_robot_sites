@@ -1,5 +1,5 @@
 id: audiences
-name: 观众
+name: Audiences
 domain: https://audiences.me/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/audiences.yml
@@ -9,18 +9,18 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: 电影, cate_level2_desc: "电影" }
-  - { id: 402, cate_level1: TV, cate_level2: 剧集, cate_level2_desc: "剧集" }
-  - { id: 403, cate_level1: TV, cate_level2: 综艺, cate_level2_desc: "综艺" }
-  - { id: 406, cate_level1: Documentary, cate_level2: 纪录片, cate_level2_desc: "纪录片" }
-  - { id: 408, cate_level1: Music, cate_level2: 音乐,cate_level2_ desc: "音乐" }
-  - { id: 404, cate_level1: Music, cate_level2: 有声书, cate_level2_desc: "有声书" }
-  - { id: 405, cate_level1: Other , cate_level2: 电子书, cate_level2_desc: "电子书" }
-  - { id: 407, cate_level1: TV, cate_level2: 体育, cate_level2_desc: "体育" }
-  - { id: 410, cate_level1: Game, cate_level2: 游戏, cate_level2_desc: "游戏" }
-  - { id: 411, cate_level1: Other, cate_level2: 软件, cate_level2_desc: "软件" }
-  - { id: 412, cate_level1: Other, cate_level2: 学习, cate_level2_desc: "学习" }
-  - { id: 409, cate_level1: Other, cate_level2: 其他, cate_level2_desc: "其他" }
+  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "电影" }
+  - { id: 402, cate_level1: TV, cate_level2: Series, cate_level2_desc: "剧集" }
+  - { id: 403, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "综艺" }
+  - { id: 406, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "纪录片" }
+  - { id: 408, cate_level1: Music, cate_level2: Musics,cate_level2_ desc: "音乐" }
+  - { id: 404, cate_level1: Music, cate_level2: AudioBooks, cate_level2_desc: "有声书" }
+  - { id: 405, cate_level1: TV , cate_level2: TV, cate_level2_desc: "电子书" }
+  - { id: 407, cate_level1: TV, cate_level2: TV, cate_level2_desc: "体育" }
+  - { id: 410, cate_level1: TV, cate_level2: TV, cate_level2_desc: "游戏" }
+  - { id: 411, cate_level1: TV, cate_level2: TV, cate_level2_desc: "软件" }
+  - { id: 412, cate_level1: TV, cate_level2: TV, cate_level2_desc: "学习" }
+  - { id: 409, cate_level1: TV, cate_level2: TV, cate_level2_desc: "其他" }
 
 userinfo:
   path: https://audiences.me/index.php
@@ -86,7 +86,7 @@ search:
     # 0 all, 1 normal, 2 free, 3 2x, 4 2xfree, 5 50%, 6 2x50%, 7 30%
     spstate: "{% if query.free %}2{% else %}0{% endif %}"
     # 0 title, 1 descr, 3 uploader, 4 imdburl (searching imdburl does not work with tt1234567, but descr is good)
-    search_area: "{% if query.imdb_id %}4{% else %}0{%endif%}"
+    search_area: "{% if query.imdb_id %}4{% else %}2{%endif%}"
     # 0 AND, 1 OR, 2 exact
     search_mode: 0
     sort: "{{ query.sort }}"
@@ -126,7 +126,7 @@ torrents:
       selector: a[href^="download.php?id="]
       attribute: href
     imdbid:
-      selector: div.imdb_100 > a
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
       filters:
         - name: re_search

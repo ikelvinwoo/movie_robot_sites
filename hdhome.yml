@@ -1,5 +1,5 @@
 id: HDHome
-name: 家园
+name: HDHome
 domain: https://hdhome.org/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/hdhome.yml
@@ -9,58 +9,90 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 411, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies SD" }
-  - { id: 412, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies IPad" }
-  - { id: 413, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies 720p" }
-  - { id: 414, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies 1080p" }
-  - { id: 415, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies REMUX" }
-  - { id: 450, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies Bluray" }
-  - { id: 499, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies UHD Blu-ray" }
-  - { id: 416, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies 2160p" }
-  - { id: 417, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/Doc SD" }
-  - { id: 418, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/Doc IPad" }
-  - { id: 419, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/Doc 720p" }
-  - { id: 420, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/Doc 1080p" }
-  - { id: 421, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/Doc REMUX" }
-  - { id: 451, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/Doc Bluray" }
-  - { id: 500, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/Doc UHD Blu-ray" }
-  - { id: 422, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/Doc 2160p" }
-  - { id: 423, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVMusic 720p" }
-  - { id: 424, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVMusic 1080i" }
-  - { id: 425, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVShow SD" }
-  - { id: 426, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVShow IPad" }
-  - { id: 471, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVShow IPad" }
-  - { id: 427, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVShow 720p" }
-  - { id: 472, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVShow 720p" }
-  - { id: 428, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVShow 1080i" }
-  - { id: 429, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVShow 1080p" }
-  - { id: 430, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV TVShow REMUX" }
+  # 种子
+  - { id: 411, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies SD" }
+  - { id: 412, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies IPad" }
+  - { id: 413, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies 720p" }
+  - { id: 414, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies 1080p" }
+  - { id: 415, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies REMUX" }
+  - { id: 450, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies Bluray" }
+  - { id: 499, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies UHD Blu-ray" }
+  - { id: 416, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies 2160p" }
+  - { id: 417, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Doc SD" }
+  - { id: 418, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Doc IPad" }
+  - { id: 419, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Doc 720p" }
+  - { id: 420, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Doc 1080p" }
+  - { id: 421, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Doc REMUX" }
+  - { id: 451, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Doc Bluray" }
+  - { id: 500, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Doc UHD Blu-ray" }
+  - { id: 422, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Doc 2160p" }
+  - { id: 423, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVMusic 720p" }
+  - { id: 424, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVMusic 1080i" }
+  - { id: 425, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVShow SD" }
+  - { id: 426, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVShow IPad" }
+  - { id: 471, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVShow IPad" }
+  - { id: 427, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVShow 720p" }
+  - { id: 428, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVShow 1080i" }
+  - { id: 429, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVShow 1080p" }
+  - { id: 430, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVShow REMUX" }
   - { id: 452, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVShows Bluray" }
   - { id: 431, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVShow 2160p" }
   - { id: 432, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVSeries SD" }
   - { id: 433, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVSeries IPad" }
   - { id: 434, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVSeries 720p" }
-  - { id: 435, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVSeries 1080i" }
-  - { id: 436, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVSeries 1080p" }
-  - { id: 437, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVSeries REMUX" }
-  - { id: 453, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVSereis Bluray" }
-  - { id: 438, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVSeries 2160p" }
-  - { id: 502, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/TVSeries 4K Bluray" }
-  - { id: 439, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/Musics APE" }
-  - { id: 440, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/Musics FLAC" }
-  - { id: 441, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/Musics MV" }
-  - { id: 503, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/Musics Bluray" }
-  - { id: 442, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/Sports 720p" }
-  - { id: 443, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/Sports 1080i" }
-  - { id: 444, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/Anime SD" }
-  - { id: 445, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/Anime IPad" }
-  - { id: 446, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/Anime 720p" }
-  - { id: 447, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/Anime 1080p" }
-  - { id: 448, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/Anime REMUX" }
-  - { id: 454, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/Anime Bluray" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
-  - { id: 449, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/Anime 2160p" }
-  - { id: 501, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/Anime UHD Blu-ray" }
+  - { id: 435, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVSeries 1080i" }
+  - { id: 436, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVSeries 1080p" }
+  - { id: 437, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVSeries REMUX" }
+  - { id: 453, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVSereis Bluray" }
+  - { id: 438, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVSeries 2160p" }
+  - { id: 502, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TVSeries 4K Bluray" }
+  - { id: 439, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Musics APE" }
+  - { id: 440, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Musics FLAC" }
+  - { id: 441, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Musics MV" }
+  - { id: 503, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Musics Bluray" }
+  - { id: 442, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports 720p" }
+  - { id: 443, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports 1080i" }
+  - { id: 444, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Anime SD" }
+  - { id: 445, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Anime IPad" }
+  - { id: 446, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Anime 720p" }
+  - { id: 447, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Anime 1080p" }
+  - { id: 448, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Anime REMUX" }
+  - { id: 454, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Anime Bluray" }
+  - { id: 409, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Misc" }
+  - { id: 449, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Anime 2160p" }
+  - { id: 501, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Anime UHD Blu-ray" }
+  - { id: 504, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Sports 2160" }
+
+  # LIVE
+  - { id: 494, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Movies Bluray" }
+  - { id: 495, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Doc Bluray" }
+  - { id: 469, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVMusic 1080i" }
+  - { id: 472, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVShow 720p" }
+  - { id: 473, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVShow 1080i" }
+  - { id: 474, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVShow 1080p" }
+  - { id: 475, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVShow REMUX" }
+  - { id: 496, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVShows Bluray" }
+  - { id: 476, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVShow 2160p" }
+  - { id: 477, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVSeries SD" }
+  - { id: 478, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVSeries IPad" }
+  - { id: 479, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVSeries 720p" }
+  - { id: 480, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVSeries 1080p" }
+  - { id: 481, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVSeries REMUX" }
+  - { id: 497, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVSereis Bluray" }
+  - { id: 482, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "TVSeries 2160p" }
+  - { id: 483, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Musics APE" }
+  - { id: 484, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Musics FLAC" }
+  - { id: 485, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Musics MV" }
+  - { id: 486, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Sports 720p" }
+  - { id: 487, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Sports 1080i" }
+  - { id: 488, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Anime SD" }
+  - { id: 489, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Anime IPad" }
+  - { id: 490, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Anime 720p" }
+  - { id: 491, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Anime 1080p" }
+  - { id: 492, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Anime REMUX" }
+  - { id: 498, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Anime Bluray" }
+  - { id: 493, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Anime 2160p" }
+
 
 userinfo:
   path: https://hdhome.org/index.php
@@ -117,7 +149,9 @@ userinfo:
 search:
   paths:
     - path: torrents.php
-      method: get
+      categories: [ 411, 412, 413, 414, 415, 450, 499, 416, 417, 418, 419, 420, 421, 451, 500, 422, 423, 424, 425, 426, 471, 427, 428, 429, 430, 452, 431, 432, 433, 434, 435, 436, 437, 453, 438, 502, 439, 440, 441, 503, 442, 443, 444, 445, 446, 447, 448, 454, 409, 449, 501, 504 ]
+    - path: live.php
+      categories: [ 494, 495, 469, 472, 473, 474, 475, 496, 476, 477, 478, 479, 480, 481, 497, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 498, 493 ]
   query:
     $raw: "{% for c in query.cates %}cat{{c}}=1&{% endfor %}"
     search: "{% if query.imdb_id %}{{query.imdb_id}}{%else%}{{query.keyword}}{% endif %}"
@@ -166,7 +200,7 @@ torrents:
       selector: a[href^="download.php?id="]
       attribute: href
     imdbid:
-      selector: div.imdb_100 > a
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
       filters:
         - name: re_search
@@ -224,3 +258,11 @@ torrents:
       selectors: td.embedded > span.tags
     description:
       text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %}"
+    minimumratio:
+      case:
+        img.hitandrun: 1
+        "*": 0
+    minimumseedtime:
+      case:
+        img.hitandrun: 1296000
+        "*": 0

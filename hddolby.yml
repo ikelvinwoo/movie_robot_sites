@@ -1,5 +1,5 @@
 id: hddolby
-name: 高清杜比
+name: HDDolby
 domain: https://www.hddolby.com/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/hddolby.yml
@@ -10,16 +10,16 @@ login:
 
 category_mappings:
   - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
+  - { id: 402, cate_level1: TV, cate_level2: Series, cate_level2_desc: "TV Series/剧集" }
+  - { id: 404, cate_level1: TV, cate_level2: Documentaries, cate_level2_desc: "Documentaries/纪录片" }
+  - { id: 405, cate_level1: Anime , cate_level2: Anime, cate_level2_desc: "Animations/动漫" }
+  - { id: 403, cate_level1: TV, cate_level2: Shows, cate_level2_desc: "TV Shows/综艺" }
   - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐MV" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/运体" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/无损音乐" }
-  - { id: 410, cate_level1: Game, cate_level2: Other, cate_level2_desc: "Game/游戏" }
-  - { id: 411, cate_level1: Other, cate_level2: Study, cate_level2_desc: "Other/学习" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
+  - { id: 407, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Sports/运体" }
+  - { id: 408, cate_level1: Music, cate_level2: Music,cate_level2_ desc: "HQ Audio/无损音乐" }
+  - { id: 410, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Game/游戏" }
+  - { id: 411, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Other/学习" }
+  - { id: 409, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Misc/其他" }
 
 userinfo:
   path: https://www.hddolby.com/index.php

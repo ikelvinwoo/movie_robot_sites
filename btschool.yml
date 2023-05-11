@@ -1,5 +1,5 @@
 id: btschool
-name: 学校
+name: BTSchool
 domain: https://pt.btschool.club/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/btschool.yml
@@ -12,14 +12,14 @@ category_mappings:
   - { id: 405, cate_level1: Movie, cate_level2: "Movies/电影", cate_level2_desc: "Movies/电影" }
   - { id: 406, cate_level1: TV, cate_level2: "连续剧/TV-Series", cate_level2_desc: "连续剧/TV-Series" }
   - { id: 407, cate_level1: Anime, cate_level2: "动漫/Animation", cate_level2_desc: "动漫/Animation" }
-  - { id: 408, cate_level1: Documentary, cate_level2: "纪录片/Documentary", cate_level2_desc: "纪录片/Documentary" }
+  - { id: 408, cate_level1: TV, cate_level2: "纪录片/Documentary", cate_level2_desc: "纪录片/Documentary" }
   - { id: 412, cate_level1: TV, cate_level2: "综艺/TV-Show", cate_level2_desc: "综艺/TV-Show" }
-  - { id: 404, cate_level1: Other, cate_level2: "软件/Software", cate_level2_desc: "软件/Software" }
-  - { id: 402, cate_level1: Other, cate_level2: "资料/Education", cate_level2_desc: "资料/Education" }
-  - { id: 411, cate_level1: Game, cate_level2: "游戏/Game", cate_level2_desc: "游戏/Game" }
+  - { id: 404, cate_level1: TV, cate_level2: "软件/Software", cate_level2_desc: "软件/Software" }
+  - { id: 402, cate_level1: TV, cate_level2: "资料/Education", cate_level2_desc: "资料/Education" }
+  - { id: 411, cate_level1: TV, cate_level2: "游戏/Game", cate_level2_desc: "游戏/Game" }
   - { id: 409, cate_level1: Music, cate_level2: "音乐/Music", cate_level2_desc: "音乐/Music" }
   - { id: 410, cate_level1: TV, cate_level2: "体育/Sports", cate_level2_desc: "体育/Sports" }
-  - { id: 415, cate_level1: Other, cate_level2: "其他/Other", cate_level2_desc: "其他/Other" }
+  - { id: 415, cate_level1: TV, cate_level2: "其他/Other", cate_level2_desc: "其他/Other" }
 
 userinfo:
   path: https://pt.btschool.club/rules.php
