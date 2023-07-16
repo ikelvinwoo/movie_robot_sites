@@ -1,8 +1,8 @@
-id: chdbits
-name: CHDBits
-domain: https://chdbits.co/
+id: ptchdbits
+name: PTCHDBits
+domain: https://ptchdbits.co/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/chdbits.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/ikelvinwoo/movie_robot_sites/main/ptchdbits.yml
 
 login:
   test:
@@ -21,7 +21,7 @@ category_mappings:
   - { id: 409, cate_level1: TV, cate_level2: TV, cate_level2_desc: "Misc" }
 
 userinfo:
-  path: https://chdbits.co//rules.php
+  path: https://ptchdbits.co/rules.php
   item:
     selector: table[id="info_block"]
   fields:
